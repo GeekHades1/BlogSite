@@ -106,3 +106,4 @@ blogsite/
 manage.py
 sqlconfig.txt
 .DS_Store
+migrations/

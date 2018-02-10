@@ -1,6 +1,12 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+import time
 # Create your views here.
 
-def index(request):
-    return HttpResponse("Hello , world!")
+def blog_index(request):
+    t = time.asctime()
+    context = {
+        'test': '测试内容',
+        'welcome': '欢迎您！',
+        'datatime': str(t),
+    }
+    return render(request, 'blog_index.html',context)
