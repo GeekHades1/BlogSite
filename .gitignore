@@ -102,7 +102,7 @@ ENV/
 # mypy
 .mypy_cache/
 .idea/
-blogsite/
+blogproject/
 manage.py
 sqlconfig.txt
 .DS_Store

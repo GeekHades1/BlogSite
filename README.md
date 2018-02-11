@@ -1,2 +1,2 @@
-# BlogSite
-使用Django建立个人博客网站
+# 个人博客
+python3 & django 2.0.2
