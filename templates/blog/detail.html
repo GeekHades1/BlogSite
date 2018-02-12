@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
+{% block title %}
+{{ post.title }}
+{% endblock title %}
+
 {% block main %}
     <article class="post post-{{ post.pk }}">
         <header class="entry-header">
