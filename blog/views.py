@@ -4,7 +4,7 @@ from markdown.extensions.toc import TocExtension
 
 from django.db.models import Q
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, TemplateView
 from django.utils.text import slugify
 
 from comments.forms import CommentForm
@@ -29,9 +29,6 @@ def index(request):
 def index(request):
     post_list = Post.objects.all()
     return render(request, 'blog/index.html', context={'post_list': post_list})
-
-def about(request):
-    return render(request, 'blog/about.html')
 
 
 class IndexView(ListView):
@@ -302,6 +299,17 @@ class TagView(ListView):
         tag = get_object_or_404(Tag, pk=self.kwargs.get('pk'))
         return super(TagView, self).get_queryset().filter(tags=tag)
 
+
+def about(request):
+    return render(request, 'blog/about.html')
+
+class AboutView(TemplateView):
+    model = Post
+    template_name = 'blog/about.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
 
 """
 def search(request):

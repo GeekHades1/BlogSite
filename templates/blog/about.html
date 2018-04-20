@@ -1,15 +1,20 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 
 {% block title %}
 斯人也
 {% endblock title %}
 
 {% block main %}
-    <p>如何联系我：</p>
+    <div class="centerd">
+        <h3>如何联系我：</h3>
 
-    <p>WeChat: </p>
-    <img src="{% static 'qrcode.png' %}" />
-
-    <p>Gmail: <a href="Mailto:geekhades1@gmail.com"></a> </p>
-    
+        <p>WeChat: 扫描下方二维码</p>
+        <img src="{% static 'qrcode.png' %}" height="200" width="200"/>
+        
+        <br/>
+        <strong>
+            <a href="Mailto:geekhades1@gmail.com"> 或者点击发 邮件 给我 </a>
+        </strong>
+    </div>
 {% endblock main %}
