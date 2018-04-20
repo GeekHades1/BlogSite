@@ -30,6 +30,9 @@ def index(request):
     post_list = Post.objects.all()
     return render(request, 'blog/index.html', context={'post_list': post_list})
 
+def about(request):
+    return render(request, 'blog/about.html')
+
 
 class IndexView(ListView):
     model = Post
