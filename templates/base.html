@@ -149,17 +149,23 @@
                 </div>
 
                 <div class="widget widget-tag-cloud">
-                    <h3 class="widget-title">技术博客</h3>
-                    {% get_tags as tag_list %}
-                    <ul>
-                        <li>
-                            <a href="http://www.mzh.ren/" title="码中人" target="_blank">码中人-技术人的博客</a> 
-                       </li>
-                    </ul>
-                </div>
+                        <h3 class="widget-title">友情链接</h3>
+                        {% get_friendly as sw_list %}
+                        <ul>
+                            {% for ShareWeb in sw_list %}
+                                <li>
+                                    <a href="{{ ShareWeb.link}}">{{ ShareWeb.name }}</a>
+                                </li>
+                            {% empty %}
+                                暂无标签！
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                
+
                 <div class="rss">
                     <a href="{% url 'rss' %}"><span class="ion-social-rss-outline"></span> RSS 订阅</a>
-                
                 </div>
             </aside>
         </div>

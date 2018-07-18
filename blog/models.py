@@ -35,6 +35,21 @@ class Tag(models.Model):
         return self.name
 
 
+class ShareWeb(models.Model):
+    """
+    分享网站标签
+    """
+    name = models.CharField(max_length=100)
+    link = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.name
+
+    def getlink(self):
+        return self.link
+    
+
+
 class Post(models.Model):
     """
     文章的数据库表稍微复杂一点，主要是涉及的字段更多。

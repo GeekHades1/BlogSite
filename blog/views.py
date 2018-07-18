@@ -8,7 +8,7 @@ from django.views.generic import ListView, DetailView, TemplateView
 from django.utils.text import slugify
 
 from comments.forms import CommentForm
-from blog.models import Post, Category, Tag
+from blog.models import Post, Category, Tag, ShareWeb
 
 """
 请使用下方的模板引擎方式。
@@ -280,6 +280,7 @@ def category(request, pk):
     return render(request, 'blog/index.html', context={'post_list': post_list})
 
 
+
 class CategoryView(ListView):
     model = Post
     template_name = 'blog/index.html'
@@ -301,10 +302,11 @@ class TagView(ListView):
 
 
 def about(request):
+    """关于我"""
     return render(request, 'blog/about.html')
 
 class AboutView(TemplateView):
-    model = Post
+    """关于我"""
     template_name = 'blog/about.html'
 
     def get_context_data(self, **kwargs):
