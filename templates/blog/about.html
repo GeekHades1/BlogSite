@@ -1,20 +1,60 @@
-{% extends 'base.html' %}
-{% load staticfiles %}
+{% extends 'base.html' %} 
+{% load staticfiles %} 
 
-{% block title %}
-斯人也
-{% endblock title %}
+{% block title %} 斯人也 {% endblock title %} 
 
 {% block main %}
-    <div class="centerd">
-        <h3>如何联系我：</h3>
 
-        <p>WeChat: 扫描下方二维码</p>
-        <img src="{% static 'qrcode.png' %}" height="200" width="200"/>
+<div>
+    <h1>关于我</h1>
+
+    <div class="codehilite">
+
+    <pre>
+    <span></span>
+    <span class="sr">class</span> <span class="nf">AboutMe</span><span class="p">(</span><span class="sr">CS_Student</span><span class="p">):</span>
+        <span class="s">"""This is a amazing class!"""</span>
         
+        <span class="n">realname = </span><span class="s">"Guanzhou Ke"</span>
+        <span class="n">email = </span><span class="s">"geekhades1@gmail.com"</span>
+        <span class="n">github = </span><span class="s">"https://github.com/geekhades1"</span>
+
+        <span class="sr">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
+            <span class="s">"""Just a normal initiation"""</span>
+            <span class="n">CS_Student.__init__(self)</span>
+        
+        <span class="sr">def</span> <span class="nf">get_skills</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
+            <span class="s">"""Return all of my skills"""</span>
+            <span class="sr">return</span> <span class="s">"(Assmebly)~(C/C++)~(Java)~(Python)"</span>
+        
+        <span class="sr">def</span> <span class="nf">hobby</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
+            <span class="s">"""Return my hobby"""</span>
+            <span class="sr">return</span> <span class="s">"Data Analysis & Data Security"</span>      
+    </pre>
+    </div>
+
+</div>
+
+<br><br><br>
+
+<div>
+    <h1>如何联系我</h3>
+
+        <p>WeChat(微信): 扫描下方二维码</p>
+        <img src="{% static 'blog/img/qrcode.png' %}" height="200" width="200" />
+
         <br/>
         <strong>
             <a href="Mailto:geekhades1@gmail.com"> 或者点击发 邮件 给我 </a>
         </strong>
-    </div>
+</div>
+
+<br><br><br>
+
+<div>
+    <h1>捐赠</h1>
+    <p>如果文章对您有帮助，您也想捐助我的话可以扫描下方二维码！</p>
+    <img src="{% static 'blog/img/wechat_donation.png' %}" />
+    <img src="{% static 'blog/img/alipay_donation.jpeg' %}"  />
+</div>
 {% endblock main %}
