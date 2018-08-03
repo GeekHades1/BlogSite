@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <title>你走错路了！</title>
     <!-- Bootstrap core CSS -->
-    <link href="{% static 'blog/css/bootstrap.css' %}" rel="stylesheet">
+    <link href="{% static 'blog/css/bootstrap.css' %}" rel="stylesheet" />
     <!-- FONT AWESOME CSS -->
     <link href="{% static 'blog/css/font-awesome.min.css' %}" rel="stylesheet" />
     <!--GOOGLE FONT -->
@@ -39,18 +39,22 @@
                     <i class="fa fa-lightbulb-o fa-5x"></i>
                 </h3>
                 <a href="https://www.ihades.cn" class="btn btn-primary">要不还是回主页看看吧？</a>
-
-                <p> 或者你可以查看一下我最新的文章 </p>
-                <div>
+                
+                <div class="widget widget-recent-posts">
+                    <p class="widget-title"> 或者你可以查看一下我最新的文章 </p>
                     {% get_recent_posts as recent_post_list %}
                     <ul>
                         {% for post in recent_post_list %}
-                        <li>
-                            <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
-                        </li>
-                        {% empty %} 暂无文章！ {% endfor %}
+                            <li style="list-style-type:none;">
+                                <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+                            </li>
+                        {% empty %}
+                            暂无文章！
+                        {% endfor %}
                     </ul>
                 </div>
+
+                
             </div>
         </div>
 

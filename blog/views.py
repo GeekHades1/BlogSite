@@ -302,7 +302,7 @@ class TagView(ListView):
 
 
 def page_not_found(request):
-    response = render_to_response('blog/404.html', {})
+    response = render_to_response('404.html', {})
     response.status_code = 404
     return response
 
