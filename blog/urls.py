@@ -1,4 +1,4 @@
-from django.conf.urls import url
+from django.conf.urls import url, handler404
 
 from . import views
 
@@ -12,3 +12,5 @@ urlpatterns = [
     url(r'^tag/(?P<pk>[0-9]+)/$', views.TagView.as_view(), name='tag'),
     # url(r'^search/$', views.search, name='search'),
 ]
+
+handler404 = "blog.views.page_not_found"
