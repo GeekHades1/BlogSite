@@ -3,8 +3,8 @@
 ==================================================*/
 body {
     font-family: 'Nova Flat', cursive;
-    background-color: #B396FF;
-color: #fff;
+    background-color: #ffffff;
+    color: rgb(3, 176, 245);
 }
 .pad-top {
     padding-top:60px;
