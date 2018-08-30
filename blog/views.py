@@ -6,6 +6,7 @@ from django.db.models import Q
 from django.shortcuts import render, get_object_or_404, render_to_response
 from django.views.generic import ListView, DetailView, TemplateView
 from django.utils.text import slugify
+from django.utils import timezone
 
 from comments.forms import CommentForm
 from blog.models import Post, Category, Tag, ShareWeb
@@ -68,6 +69,11 @@ class IndexView(ListView):
 
         # 将更新后的 context 返回，以便 ListView 使用这个字典中的模板变量去渲染模板。
         # 注意此时 context 字典中已有了显示分页导航条所需的数据。
+
+        # 在此插入访问数据
+        for item in context["object_list"]:
+            item.read_time_text = get_offset_time(item.read_time, timezone.now())
+            # print(item.read_time_text)
         return context
 
     def pagination_data(self, paginator, page, is_paginated):
@@ -195,6 +201,8 @@ def detail(request, pk):
                                       'markdown.extensions.codehilite',
                                       'markdown.extensions.toc',
                                   ])
+
+    
     # 记得在顶部导入 CommentForm
     form = CommentForm()
     # 获取这篇 post 下的全部评论
@@ -207,6 +215,22 @@ def detail(request, pk):
                }
     return render(request, 'blog/detail.html', context=context)
 
+
+def get_offset_time(former_time, now_time):
+    """传入datetime对象，返回两者时间差的偏移量
+    ex: 1分钟， 一天..."""
+    offset_time = (now_time-former_time).seconds 
+    offset_time_text = ""
+    if offset_time > 86400:
+        offset_time_text += ''.join([str((offset_time // 86400)), " 天"])
+    elif offset_time > 3600:
+        offset_time_text += ''.join([str((offset_time // 3600)), " 小时"])
+    elif offset_time > 60:
+        offset_time_text += ''.join([str((offset_time // 60)), " 分钟"])
+    elif offset_time > 0:
+        offset_time_text += ''.join([str(offset_time), " 秒"])
+
+    return offset_time_text
 
 # 记得在顶部导入 DetailView
 class PostDetailView(DetailView):
@@ -239,6 +263,13 @@ class PostDetailView(DetailView):
         ])
         post.body = md.convert(post.body)
         post.toc = md.toc
+
+        # 装入阅读时间
+        post.read_time_text = get_offset_time(post.read_time, timezone.now())
+
+        # 更新访问时间
+        post.update_read_time()
+
         return post
 
     def get_context_data(self, **kwargs):

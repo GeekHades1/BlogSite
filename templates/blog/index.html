@@ -24,6 +24,7 @@
                     <span class="comments-link">
                         <a href="{{ post.get_absolute_url }}#comment-area">{{ post.comment_set.count }} 评论</a></span>
                     <span class="views-count"><a href="{{ post.get_absolute_url }}">{{ post.views }} 阅读</a></span>
+                    <span ><a href="{{ post.get_absolute_url }}">➟大约在 {{ post.read_time_text }}前有访客阅读过</a></span>
                 </div>
             </header>
             <div class="entry-content clearfix">

@@ -1,5 +1,6 @@
 from django import template
 from django.db.models.aggregates import Count
+from django.utils import timezone
 
 from blog.models import Post, Category, Tag, ShareWeb
 
@@ -8,7 +9,8 @@ register = template.Library()
 
 @register.simple_tag
 def get_recent_posts(num=5):
-    return Post.objects.all()[:num]
+    posts = Post.objects.all()[:num]
+    return posts
 
 
 @register.simple_tag
