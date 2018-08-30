@@ -4,7 +4,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
 from django.utils.html import strip_tags
-
+from django.utils import timezone 
 
 
 class Category(models.Model):
@@ -73,6 +73,9 @@ class Post(models.Model):
     # 新增 views 字段记录阅读量
     views = models.PositiveIntegerField(default=0)
 
+    # 新增 read_time 阅读文章时间字段
+    read_time = models.DateTimeField()
+
     # 这是分类与标签，分类与标签的模型我们已经定义在上面。
     # 我们在这里把文章对应的数据库表和分类、标签对应的数据库表关联了起来，但是关联形式稍微有点不同。
     # 我们规定一篇文章只能对应一个分类，但是一个分类下可以有多篇文章，所以我们使用的是 ForeignKey，即一对多的关联关系。
@@ -102,8 +105,16 @@ class Post(models.Model):
         ordering = ['-created_time']
 
     def increase_views(self):
+        """增加访问人数"""
         self.views += 1
         self.save(update_fields=['views'])
+
+    def update_read_time(self):
+        """更新阅读时间
+        datetime.datetime.utcnow().replace(tzinfo=utc)
+        """
+        self.read_time = timezone.now()
+        self.save(update_fields=['read_time'])
 
     def save(self, *args, **kwargs):
         # 如果没有填写摘要
