@@ -219,7 +219,10 @@ def detail(request, pk):
 def get_offset_time(former_time, now_time):
     """传入datetime对象，返回两者时间差的偏移量
     ex: 1分钟， 一天..."""
-    offset_time = (now_time-former_time).seconds 
+    offset_time = int((now_time-former_time).total_seconds())
+    # test time accuracy
+    # print("[Info] offset_time test: formertime = {}, now_time = {}".format(former_time, now_time))
+    # print("[Info] offset_time = {}".format(offset_time))
     offset_time_text = ""
     if offset_time > 86400:
         offset_time_text += ''.join([str((offset_time // 86400)), " 天"])

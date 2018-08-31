@@ -11,9 +11,10 @@
 
 # 预览
 - PC端
- ![PC](shootscreen/pc.png)
+   ![PC](screenshots/pc.png)
 - 移动端
- ![mobile](shootscreen/mobile.png)
+
+   ![mobile](screenshots/mobile.png)
 
 
 # 一些小的更新
