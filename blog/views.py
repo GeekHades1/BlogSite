@@ -192,8 +192,8 @@ def detail(request, pk):
 def detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
 
-    # 阅读量 +1
-    post.increase_views()
+    # # 阅读量 +1
+    # post.increase_views()
 
     post.body = markdown.markdown(post.body,
                                   extensions=[
@@ -224,7 +224,11 @@ def get_offset_time(former_time, now_time):
     # print("[Info] offset_time test: formertime = {}, now_time = {}".format(former_time, now_time))
     # print("[Info] offset_time = {}".format(offset_time))
     offset_time_text = ""
-    if offset_time > 86400:
+    if offset_time >= 31104000:
+        offset_time_text += ''.join([str((offset_time // 31104000)), " 年"])
+    elif offset_time >= 2592000:
+        offset_time_text += ''.join([str((offset_time // 2592000)), " 个月"])
+    elif offset_time > 86400:
         offset_time_text += ''.join([str((offset_time // 86400)), " 天"])
     elif offset_time > 3600:
         offset_time_text += ''.join([str((offset_time // 3600)), " 小时"])
