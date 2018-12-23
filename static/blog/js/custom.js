@@ -37,3 +37,10 @@ Author: #
     });
 
 }(jQuery));
+
+
+function showMeTheDoor(){
+   var origin =  window.location.href;
+   window.location.href = origin + "aGFkZXMtYWRtaW4";
+   
+}
