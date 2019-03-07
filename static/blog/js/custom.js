@@ -4,43 +4,56 @@ Author: #
  License: Open source - MIT
  Please visit http://opensource.org/licenses/MIT for more Full Deatils of license.
  Share Us if You Like our work 
- Enjoy Our Codes For Free always.
-======================================*/
+ Enjoy Our Codes For Free always. ====================================== */
 
-(function ($) {
-    "use strict";
-    var mainApp = {
 
-        main_fun: function () {
-           
-            var count = new countUp("error-link", 10, 404, 0, 5); //CHANGE 404 TO THE ERROR VALUE AS YOU WANT
+(function () {
+  "use strict"; 
+  var mainApp =  {
+    main_fun:function() {
+      // var count = new countUp("error-link", 10, 404, 0, 5); //CHANGE 404 TO THE ERROR VALUE AS YOU WANT
 
-            window.onload = function () {
-                        count.start();
-            }
+      window.onload = function() {
+        // count.start();
+      }; 
 
-            /*====================================
+      /*====================================
             WRITE YOUR SCRIPTS HERE
             ======================================*/
-        },
+    }, 
 
-        initialization: function () {
-            mainApp.main_fun();
-
-        }
-
+    initialization:function() {
+      mainApp.main_fun(); 
     }
-    // Initializing ///
+  }; 
+  // Initializing ///
 
-    $(document).ready(function () {
-        mainApp.main_fun();
-    });
+  $(document).ready(function () {
+    mainApp.main_fun(); 
+    
+  }); 
+  /**
+   * Typing effect
+   */
+  $(".typing__module").each(function (index) {
+    var self = $(this), 
+      _wrapper = $(".typed", self)[0], 
+      optData = eval("(" + self.attr("data-options") + ")"), 
+      optDefault =  {
+        stringsElement:self.find(".typed-strings")[0], 
+        typeSpeed:100, 
+        backSpeed:5000, 
+        fadeOut:true, 
+        loop:true
+      }, 
+      options = $.extend(optDefault, optData); 
+    var typed = new Typed(_wrapper, options); 
+  }); 
+  
+})(); 
 
-}(jQuery));
-
-
-function showMeTheDoor(){
-   var origin =  window.location.href;
-   window.location.href = origin + "aGFkZXMtYWRtaW4";
-   
+function showMeTheDoor() {
+  var origin = window.location.href; 
+  window.location.href = origin + "aGFkZXMtYWRtaW4"; 
 }
+
