@@ -6,7 +6,6 @@ Author: #
  Share Us if You Like our work 
  Enjoy Our Codes For Free always. ====================================== */
 
-
 (function () {
   "use strict"; 
   var mainApp =  {
@@ -15,6 +14,7 @@ Author: #
 
       window.onload = function() {
         // count.start();
+        ToggleSlogan();
       }; 
 
       /*====================================
@@ -30,7 +30,6 @@ Author: #
 
   $(document).ready(function () {
     mainApp.main_fun(); 
-    
   }); 
   /**
    * Typing effect
@@ -51,6 +50,13 @@ Author: #
   }); 
   
 })(); 
+
+function ToggleSlogan() {
+    var url = document.URL;
+    if(url.match("post") != null ) {
+      $('.typing__module').hide();
+    }
+}
 
 function showMeTheDoor() {
   var origin = window.location.href; 

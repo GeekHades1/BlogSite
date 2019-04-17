@@ -76,17 +76,24 @@
             </div><!-- col-md-8 -->
         </div>
         <!-- page-title -->
-            <h2 class="page-title__title"><br>
-                
-                <!-- typing__module -->
-                <div class="typing__module">
-                    <div class="typed-strings"><span>您好！我是斯人也，欢迎您来到我的主页。</span><span>我是一名Programmer.</span><span>目前的研究方向是数据分析!</span>
-                    </div><span class="typed"></span>
-                </div><!-- End / typing__module -->
-                
-            </h2>
-            <p class="page-title__text"></p>
-            <div class="page-title__divider"></div>
+        <br>
+        <!-- typing__module -->
+            <div class="typing__module page-title__title">
+
+                <div class="typed-strings">
+                    {% get_slogans as slogans %}
+                    {% for slogan in slogans %}
+                        <span>{{ slogan.content }}</span>
+                    {% empty %}
+                        <span>I am hades(斯人也), Welcome you to view my website.</span>
+                    {% endfor %}
+                    <!-- <span>I am hades(斯人也).Welcome you to view my website.</span>
+                    <span>I am a Programmer.</span>
+                    <span>I am dedicated to Data Analytics currently.</span>
+                    <span>The About Me page has more information about me.</span> -->
+                </div><span class="typed"></span>
+              
+            </div><!-- End / typing__module -->
     </header>
 </div>
 <div class="copyrights">Power by <a href="https://ihades.cn">GeekHades</a></div>

@@ -53,8 +53,8 @@ class OfferLink(models.Model):
     """
     优惠券
     """
-    name = models.CharField(max_length=100)
-    link = models.CharField(max_length=200)
+    name = models.CharField(max_length=100, verbose_name='标题')
+    link = models.CharField(max_length=200, verbose_name='链接')
 
     def __str__(self):
         return self.name
@@ -62,6 +62,26 @@ class OfferLink(models.Model):
     def getlink(self):
         return self.link
     
+    class Meta:
+        verbose_name = u'优惠券'
+        verbose_name_plural = u'优惠券'
+
+
+class SloganContent(models.Model):
+    """
+    欢迎语
+    """
+    content = models.CharField(max_length=200, verbose_name='内容')
+
+    def get_content(self):
+        return self.content
+
+    def __str__(self):
+        return self.content
+
+    class Meta:
+        verbose_name = u'欢迎语'
+        verbose_name_plural = u'欢迎语'
 
 
 class Post(models.Model):
