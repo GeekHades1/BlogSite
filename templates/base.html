@@ -115,13 +115,13 @@
                     </ul>
                 </div>
 
-                <div class="widget widget-category">
-                    <h3 class="widget-title">**优惠券**</h3>
+                <div class="widget widget-tag-cloud">
+                    <h3 class="widget-title" style="color: crimson">**优惠券**</h3>
                     {% get_offer_link as offer_links %}
                     <ul>
                         {% for offer_link in offer_links %}
                             <li>
-                                <a href="{{ offer_link.link }}">{{ offer_link.name }} </a>
+                                <a href="{{ offer_link.link }}" target="_blank">{{ offer_link.name }} </a>
                             </li>
                         {% empty %}
                             暂无优惠券！
@@ -164,7 +164,7 @@
                         <ul>
                             {% for ShareWeb in sw_list %}
                                 <li>
-                                    <a href="{{ ShareWeb.link}}">{{ ShareWeb.name }}</a>
+                                    <a href="{{ ShareWeb.link}}" target="_blank">{{ ShareWeb.name }}</a>
                                 </li>
                             {% empty %}
                                 暂无标签！
