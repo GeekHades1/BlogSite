@@ -59,7 +59,13 @@ function ToggleSlogan() {
 }
 
 function showMeTheDoor() {
-  var origin = window.location.href; 
-  window.location.href = origin + "aGFkZXMtYWRtaW4"; 
+  var origin = window.location.href;
+  var index_post = origin.indexOf("post")
+  if(index_post != -1) {
+    new_url = origin.substr(0, 22) + "aGFkZXMtYWRtaW4"
+  }else {
+    new_url = origin + "aGFkZXMtYWRtaW4"; 
+  }
+  window.location.href = new_url
 }
 
