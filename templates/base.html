@@ -114,17 +114,17 @@
                         {% endfor %}
                     </ul>
                 </div>
-                <div class="widget widget-archives">
-                    <h3 class="widget-title">归档</h3>
-                    {% archives as date_list %}
+
+                <div class="widget widget-category">
+                    <h3 class="widget-title">**优惠券**</h3>
+                    {% get_offer_link as offer_links %}
                     <ul>
-                        {% for date in date_list %}
+                        {% for offer_link in offer_links %}
                             <li>
-                                <a href="{% url 'blog:archives' date.year date.month %}">{{ date.year }}
-                                    年 {{ date.month }} 月</a>
+                                <a href="{{ offer_link.link }}">{{ offer_link.name }} </a>
                             </li>
                         {% empty %}
-                            暂无归档！
+                            暂无优惠券！
                         {% endfor %}
                     </ul>
                 </div>

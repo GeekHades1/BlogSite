@@ -2,7 +2,7 @@ from django import template
 from django.db.models.aggregates import Count
 from django.utils import timezone
 
-from blog.models import Post, Category, Tag, ShareWeb
+from blog.models import Post, Category, Tag, ShareWeb, OfferLink
 
 register = template.Library()
 
@@ -33,3 +33,7 @@ def get_tags():
 @register.simple_tag
 def get_friendly():
     return ShareWeb.objects.all()
+
+@register.simple_tag
+def get_offer_link():
+    return OfferLink.objects.all()
