@@ -47,6 +47,20 @@ class ShareWeb(models.Model):
 
     def getlink(self):
         return self.link
+
+
+class OfferLink(models.Model):
+    """
+    优惠券
+    """
+    name = models.CharField(max_length=100)
+    link = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.name
+
+    def getlink(self):
+        return self.link
     
 
 
