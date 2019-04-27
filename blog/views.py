@@ -36,7 +36,7 @@ class IndexView(ListView):
     model = Post
     template_name = 'blog/index.html'
     context_object_name = 'post_list'
-    paginate_by = 5
+    paginate_by = 4
 
     def get_context_data(self, **kwargs):
         """
@@ -60,10 +60,10 @@ class IndexView(ListView):
         paginator = context.get('paginator')
         page = context.get('page_obj')
         is_paginated = context.get('is_paginated')
-
+       
         # 调用自己写的 pagination_data 方法获得显示分页导航条需要的数据，见下方。
         pagination_data = self.pagination_data(paginator, page, is_paginated)
-
+        
         # 将分页导航条的模板变量更新到 context 中，注意 pagination_data 方法返回的也是一个字典。
         context.update(pagination_data)
 

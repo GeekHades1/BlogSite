@@ -44,34 +44,28 @@
   </div>
 </article>
 {% empty %}
-
 <div class="no-post">暂时还没有发布的文章！</div>
-{% endfor %} {% comment %} {% if is_paginated %}
-<div class="pagination">
-  <ul>
-    {% if first %}
-    <li><a href="?page=1">1</a></li>
-    {% endif %} {% if left %} {% if left_has_more %}
-    <li><span>...</span></li>
-    {% endif %} {% for i in left %}
-    <li>
-      <a href="?page={{ i }}">{{ i }}</a>
-    </li>
-    {% endfor %} {% endif %}
-    <li class="current">
-      <a href="?page={{ page_obj.number }}">{{ page_obj.number }}</a>
-    </li>
-    {% if right %} {% for i in right %}
-    <li>
-      <a href="?page={{ i }}">{{ i }}</a>
-    </li>
-    {% endfor %} {% if right_has_more %}
-    <li><span>...</span></li>
-    {% endif %} {% endif %} {% if last %}
-    <li>
-      <a href="?page={{ paginator.num_pages }}">{{ paginator.num_pages }}</a>
-    </li>
+{% endfor %} 
+
+{% if is_paginated %}
+<div class="center-div">
+<ul class="mypagination">
+    {% if left %}
+      <li><a href="?page={{ page_obj.previous_page_number }}">«</a></li>
+      {% for i in left %}
+        <li> <a href="?page={{ i }}">{{ i }}</a> </li>
+      {% endfor %}
     {% endif %}
-  </ul>
+        <li><a class="active" href="?page={{ page_obj.number }}">{{ page_obj.number }}</a></li>
+    {% if right %}
+    {% for i in right %}
+      <li><a href="?page={{ i }}">{{ i }}</a></li>
+    {% endfor %}
+      <li><a href="?page={{ page_obj.next_page_number }}">»</a></li>
+    {% endif %}
+    
+</ul>
 </div>
-{% endif %} {% endcomment %} {% endblock main %}
+{% endif %}
+
+{% endblock main %}
