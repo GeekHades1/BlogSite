@@ -69,3 +69,7 @@ function showMeTheDoor() {
   window.location.href = new_url
 }
 
+function refArticle(url) {
+  window.location.href = url
+}
+

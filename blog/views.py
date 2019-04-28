@@ -7,24 +7,7 @@ from django.shortcuts import render, get_object_or_404, render_to_response
 from django.views.generic import ListView, DetailView, TemplateView
 from django.utils.text import slugify
 from django.utils import timezone
-
-from comments.forms import CommentForm
 from blog.models import Post, Category, Tag, ShareWeb
-
-"""
-请使用下方的模板引擎方式。
-def index(request):
-    return HttpResponse("欢迎访问我的博客首页！")
-"""
-
-"""
-请使用下方真正的首页视图函数
-def index(request):
-    return render(request, 'blog/index.html', context={
-        'title': '我的博客首页',
-        'welcome': '欢迎访问我的博客首页'
-    })
-"""
 
 
 def index(request):
@@ -175,20 +158,6 @@ class IndexView(ListView):
         return data
 
 
-"""
-请使用下方包含评论列表和评论表单的详情页视图
-def detail(request, pk):
-    post = get_object_or_404(Post, pk=pk)
-    post.body = markdown.markdown(post.body,
-                                  extensions=[
-                                      'markdown.extensions.extra',
-                                      'markdown.extensions.codehilite',
-                                      'markdown.extensions.toc',
-                                  ])
-    return render(request, 'blog/detail.html', context={'post': post})
-"""
-
-
 def detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
 
@@ -202,16 +171,9 @@ def detail(request, pk):
                                       'markdown.extensions.toc',
                                   ])
 
-    
-    # 记得在顶部导入 CommentForm
-    form = CommentForm()
-    # 获取这篇 post 下的全部评论
-    comment_list = post.comment_set.all()
-
     # 将文章、表单、以及文章下的评论列表作为模板变量传给 detail.html 模板，以便渲染相应数据。
     context = {'post': post,
                'form': form,
-               'comment_list': comment_list
                }
     return render(request, 'blog/detail.html', context=context)
 
@@ -283,12 +245,7 @@ class PostDetailView(DetailView):
         # 覆写 get_context_data 的目的是因为除了将 post 传递给模板外（DetailView 已经帮我们完成），
         # 还要把评论表单、post 下的评论列表传递给模板。
         context = super(PostDetailView, self).get_context_data(**kwargs)
-        form = CommentForm()
-        comment_list = self.object.comment_set.all()
-        context.update({
-            'form': form,
-            'comment_list': comment_list
-        })
+  
         return context
 
 
@@ -355,17 +312,3 @@ class AboutView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         return context
-
-"""
-def search(request):
-    q = request.GET.get('q')
-    error_msg = ''
-
-    if not q:
-        error_msg = "请输入关键词"
-        return render(request, 'blog/index.html', {'error_msg': error_msg})
-
-    post_list = Post.objects.filter(Q(title__icontains=q) | Q(body__icontains=q))
-    return render(request, 'blog/index.html', {'error_msg': error_msg,
-                                               'post_list': post_list})
-"""
