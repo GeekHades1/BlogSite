@@ -6,7 +6,7 @@
 {% endif %} 
 
 {% for post in post_list %}
-<article class="box post post-{{ post.pk }}">
+<article class="box post post-{{ post.pk }}" onclick="refArticle('{{ post.get_absolute_url }}' )">
   <header class="entry-header">
     <h1 class="entry-title">
       <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
