@@ -107,3 +107,5 @@ manage.py
 sqlconfig.txt
 .DS_Store
 migrations/
+whoosh_index
+whoosh_index/
