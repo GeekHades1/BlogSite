@@ -885,24 +885,30 @@ img {
 /**
  * 13.0 - Pagination
  */
-.pagination-simple {
-    padding-left: 30px;
-    font-size: 16px;
-}
-
-.pagination ul {
-    list-style: none;
-}
-
-.pagination ul li {
+ ul.mypagination {
     display: inline-block;
-    font-size: 16px;
-    margin-right: 5px;
+    padding: 0;
+    margin: 0;
 }
 
-.current a {
-    color: red;
+ul.mypagination li {display: inline;}
+
+ul.mypagination li a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 5px;
 }
+
+ul.mypagination li a.active {
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+}
+
+ul.mypagination li a:hover:not(.active) {background-color: #ddd;}
+
 
 /* typing */
 .awe-section {
@@ -1099,6 +1105,11 @@ img {
 } 
 .box:hover::after { 
     opacity: 1; 
+}
+
+.center-div {
+    padding-top: 20px;
+    text-align: center;
 }
 
   
