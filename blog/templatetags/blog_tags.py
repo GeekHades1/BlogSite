@@ -8,8 +8,9 @@ register = template.Library()
 
 
 @register.simple_tag
-def get_recent_posts(num=5):
-    posts = Post.objects.all()[:num]
+def get_hotest_posts(num=5):
+    # posts = Post.objects.all()[:num]
+    posts = Post.objects.order_by('-views')[:num]
     return posts
 
 
