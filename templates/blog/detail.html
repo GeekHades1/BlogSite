@@ -1,3 +1,4 @@
+
 {% extends 'base.html' %}
 
 {% block title %}
@@ -22,7 +23,7 @@
             {{ post.body|safe }}
             <div class="widget-tag-cloud">
                 <ul>
-                    标签：
+                    Tags：
                     {% for tag in post.tags.all %}
                         <li><a href="{% url 'blog:tag' tag.pk %}"># {{ tag.name }}</a></li>
                     {% endfor %}
