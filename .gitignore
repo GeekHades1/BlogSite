@@ -109,3 +109,4 @@ sqlconfig.txt
 migrations/
 whoosh_index
 whoosh_index/
+bin/

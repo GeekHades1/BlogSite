@@ -1,5 +1,4 @@
 import markdown
-
 from markdown.extensions.toc import TocExtension
 
 from django.db.models import Q
@@ -228,7 +227,7 @@ class PostDetailView(DetailView):
         md = markdown.Markdown(extensions=[
             'markdown.extensions.extra',
             'markdown.extensions.codehilite',
-            TocExtension(slugify=slugify),
+            TocExtension(slugify=slugify)
         ])
         post.body = md.convert(post.body)
         post.toc = md.toc
