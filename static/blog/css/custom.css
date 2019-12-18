@@ -49,6 +49,7 @@ a {
     color: #333;
 }
 
+
 a:hover, a:focus {
     text-decoration: none;
     color: #000;
@@ -238,6 +239,10 @@ img {
     line-height: 1.9;
     font-weight: 300;
     color: #000;
+}
+
+.entry-content a{
+    color: #428bca;
 }
 
 .post-category::after,

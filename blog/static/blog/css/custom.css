@@ -240,6 +240,10 @@ img {
     color: #000;
 }
 
+.entry-content a{
+    color: #428bca;
+}
+
 .post-category::after,
 .post-date::after,
 .post-author::after,
